@@ -1,0 +1,1 @@
+# This Chrome extension moves all the exact search results to the top in SERP
