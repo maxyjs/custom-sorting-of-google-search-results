@@ -58,7 +58,7 @@ class SearchQueryHandler {
 
       const all = [...tokens]
 
-      var result = {
+      let result = {
         includesMandatory: false,
         all,
         exceptions: [],
@@ -67,7 +67,7 @@ class SearchQueryHandler {
       }
 
       const countTokens = tokens.length - 1
-      var i = 0
+      let i = 0
 
       while (i <= countTokens) {
 
@@ -140,7 +140,7 @@ class ResultsHandler {
 
   getResultsDetermineCategories() {
 
-    var exactCount = 0
+    let exactCount = 0
     const exactResultsIndexes = []
 
     this.results.forEach((result, resultIndex) => {
