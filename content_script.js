@@ -1,6 +1,7 @@
 class GoogleSearchPageParser {
 
-  constructor(){}
+  constructor() {
+  }
 
   getInputValue() {
     try {
@@ -14,12 +15,13 @@ class GoogleSearchPageParser {
   getAllSearchResult() {
     const searchResults = [...document.querySelectorAll('.g:not(.mnr-c)')]
     const results = searchResults.map($resultElem => {
-      return _createObjResult($resultElem)}
+        return _createObjResult($resultElem)
+      }
     )
 
     return results
 
-    function _createObjResult ($resultElem) {
+    function _createObjResult($resultElem) {
       try {
         const $tagTitle = $resultElem.querySelector('h3');
         const titleText = $tagTitle.innerText.toLowerCase();
@@ -33,7 +35,7 @@ class GoogleSearchPageParser {
           exact: false
         };
       } catch (err) {
-        console.warn( err );
+        console.warn(err);
       }
     }
   }
@@ -166,11 +168,12 @@ class ResultsHandler {
 }
 
 class MutatorDOM {
-  constructor() {}
+  constructor() {
+  }
 
   moveAllExactResultsAfterFirstResult(allResultsObjs_handled) {
 
-    if(allResultsObjs_handled.exactCount === 0) {
+    if (allResultsObjs_handled.exactCount === 0) {
       return;
     }
 
@@ -203,6 +206,13 @@ class MutatorDOM {
   }
 }
 
+function openFirstResult() {
+  const result = document.querySelector("h3")
+  if (result) {
+    result.click()
+  }
+}
+
 (function handlePage() {
 
   const googleSearchPageParser = new GoogleSearchPageParser()
@@ -219,6 +229,7 @@ class MutatorDOM {
   const mutatorDOM = new MutatorDOM()
   mutatorDOM.moveAllExactResultsAfterFirstResult(allResultsObjs_categorized)
 
+  openFirstResult()
 })()
 
 
